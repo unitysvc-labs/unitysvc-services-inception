@@ -3,12 +3,12 @@ import json
 import requests
 
 # Config
-API_KEY = os.environ.get("API_KEY")
+UNITYSVC_API_KEY = os.environ.get("UNITYSVC_API_KEY")
 API_ENDPOINT = os.environ.get("base_url")
 MODEL = "{{offering.name}}"
 
 headers = {
-    "Authorization": f"Bearer {API_KEY}",
+    "Authorization": f"Bearer {UNITYSVC_API_KEY}",
     "Content-Type": "application/json"
 }
 
