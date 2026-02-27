@@ -4,7 +4,7 @@ import requests
 
 # Config
 UNITYSVC_API_KEY = os.environ.get("UNITYSVC_API_KEY")
-UNITYSVC_BASE_URL = os.environ.get("UNITYSVC_BASE_URL")
+SERVICE_BASE_URL = os.environ.get("SERVICE_BASE_URL")
 MODEL = "{{offering.name}}"
 
 headers = {
@@ -46,7 +46,7 @@ data = {
 }
 
 # Send request
-response = requests.post(f"{UNITYSVC_BASE_URL}", headers=headers, json=data)
+response = requests.post(f"{SERVICE_BASE_URL}", headers=headers, json=data)
 
 if response.status_code != 200:
     print(f"Error {response.status_code}: {response.text}")

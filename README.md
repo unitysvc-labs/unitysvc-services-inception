@@ -137,7 +137,7 @@ Configure the following secrets in your repository settings (**Settings** -> **S
 
 ### Required Secrets
 
-#### `UNITYSVC_BASE_URL`
+#### `SERVICE_BASE_URL`
 
 - **Description**: The UnitySVC backend API URL
 - **Example**: `https://api.unitysvc.com/v1`
@@ -176,7 +176,7 @@ usvc data list
 usvc data populate
 
 # Upload manually (usually done via CI/CD)
-export UNITYSVC_BASE_URL="https://api.unitysvc.com/v1"
+export SERVICE_BASE_URL="https://api.unitysvc.com/v1"
 export UNITYSVC_API_KEY="your-api-key"
 usvc services upload
 ```

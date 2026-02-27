@@ -26,7 +26,7 @@ jobs:
 
       - name: Upload services
         env:
-          UNITYSVC_BASE_URL: ${{ secrets.UNITYSVC_BASE_URL }}
+          SERVICE_BASE_URL: ${{ secrets.SERVICE_BASE_URL }}
           UNITYSVC_API_KEY: ${{ secrets.UNITYSVC_API_KEY }}
         run: |
           echo "Uploading services..."
@@ -38,7 +38,7 @@ jobs:
           echo "## Upload Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Uploaded to Backend" >> $GITHUB_STEP_SUMMARY
-          echo "- Backend URL: \`${{ secrets.UNITYSVC_BASE_URL }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Backend URL: \`${{ secrets.SERVICE_BASE_URL }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Triggered by PR: #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Upload Details" >> $GITHUB_STEP_SUMMARY
