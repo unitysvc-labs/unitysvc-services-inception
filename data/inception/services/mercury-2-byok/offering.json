@@ -1,0 +1,23 @@
+{
+  "currency": "USD",
+  "description": "Mercury 2 language model",
+  "details": {},
+  "display_name": "Mercury 2",
+  "name": "mercury-2",
+  "schema": "offering_v1",
+  "service_type": "llm",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "byok"
+  ],
+  "time_created": "2026-03-09T17:28:00.193096Z",
+  "upstream_access_interfaces": {
+    "Inception API": {
+      "access_method": "http",
+      "base_url": "https://api.inceptionlabs.ai/v1",
+      "rate_limits": []
+    }
+  }
+}

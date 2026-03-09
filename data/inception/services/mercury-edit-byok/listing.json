@@ -49,23 +49,16 @@
       "mime_type": "bash"
     }
   },
-  "list_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.25",
-    "output": "1",
-    "reference": null,
-    "type": "one_million_tokens"
-  },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-26T02:54:01.478Z",
+  "time_created": "2026-03-09T17:28:00.192088Z",
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
       "api_key": "${ secrets.INCEPTION_API_KEY }",
       "base_url": "${GATEWAY_BASE_URL}/p/inception",
       "routing_key": {
-        "model": "mercury-coder"
+        "model": "mercury-edit"
       }
     }
   }
