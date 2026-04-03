@@ -1,0 +1,30 @@
+{
+  "capabilities": [
+    "llm"
+  ],
+  "currency": "USD",
+  "description": "Mercury Edit 2 language model",
+  "details": {},
+  "display_name": "Mercury Edit 2",
+  "name": "mercury-edit-2",
+  "schema": "offering_v1",
+  "service_type": "llm",
+  "status": "ready",
+  "tags": [
+    "ai",
+    "gateway",
+    "byok"
+  ],
+  "time_created": "2026-04-03T02:59:36.437539Z",
+  "upstream_access_config": {
+    "Inception API": {
+      "access_method": "http",
+      "api_key": "${ customer_secrets.INCEPTION_API_KEY }",
+      "base_url": "https://api.inceptionlabs.ai/v1",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "mercury-edit-2"
+      }
+    }
+  }
+}
