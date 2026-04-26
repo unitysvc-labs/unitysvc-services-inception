@@ -4,7 +4,10 @@
   ],
   "currency": "USD",
   "description": "Mercury Edit language model",
-  "details": {},
+  "details": {
+    "context_length": null,
+    "parameter_count": null
+  },
   "display_name": "Mercury Edit",
   "name": "mercury-edit",
   "schema": "offering_v1",
