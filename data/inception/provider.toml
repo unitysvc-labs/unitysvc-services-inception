@@ -9,7 +9,7 @@ time_created = "2025-08-28T00:00:00Z"
 
 [services_populator]
 command = 'scripts/update_services.py'
-requirements = ['any-llm-sdk[inception]', 'requests', 'unitysvc-services']
+requirements = ['any-llm-sdk[inception]', 'requests', 'unitysvc-sellers']
 
 [services_populator.envs]
 # API key should be provided via INCEPTION_API_KEY environment variable
