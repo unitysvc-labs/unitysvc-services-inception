@@ -17,7 +17,7 @@
   ],
   "time_created": "2026-03-09T17:28:00.193096Z",
   "upstream_access_config": {
-    "inception_api": {
+    "Inception API": {
       "access_method": "http",
       "api_key": "${ customer_secrets.INCEPTION_API_KEY }",
       "base_url": "https://api.inceptionlabs.ai/v1",
