@@ -5,11 +5,14 @@
   "currency": "USD",
   "description": "Mercury language model",
   "details": {
-    "context_length": 32000,
+    "context_length": 128000,
     "litellm_provider": "vercel_ai_gateway",
     "max_input_tokens": 32000,
     "max_output_tokens": 16384,
     "max_tokens": 16384,
+    "metadata_sources": {
+      "context_length": "openrouter"
+    },
     "mode": "chat",
     "parameter_count": null
   },
