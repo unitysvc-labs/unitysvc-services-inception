@@ -1,8 +1,8 @@
-curl "$SERVICE_BASE_URL" \
+curl "{{ service_base_url }}" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $UNITYSVC_API_KEY" \
   -d '{
-    "model": "${MODEL:-{{offering.name}}}",
+    "model": "{{ routing_key.model }}}}",
     "messages": [
       {
         "role": "system",
