@@ -23,13 +23,14 @@
       "$doc_preset": "llm_code_example_shell"
     }
   },
+  "name": "inception/mercury-2",
   "schema": "listing_v1",
   "status": "ready",
   "time_created": "2026-03-09T17:28:00.193347Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
-      "base_url": "${API_GATEWAY_BASE_URL}/inception",
+      "base_url": "${API_GATEWAY_BASE_URL}/{{ service_name }}",
       "routing_key": {
         "model": "mercury-2"
       }
