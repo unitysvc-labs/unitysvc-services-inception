@@ -3,28 +3,27 @@
     "llm"
   ],
   "currency": "USD",
-  "description": "Mercury Coder language model",
+  "description": "Mercury language model",
   "details": {
-    "context_length": 32000,
+    "context_length": 128000,
     "litellm_provider": "vercel_ai_gateway",
     "max_input_tokens": 32000,
     "max_output_tokens": 16384,
     "max_tokens": 16384,
     "metadata_sources": {
-      "context_length": "litellm"
+      "context_length": "openrouter"
     },
     "mode": "chat",
     "parameter_count": null
   },
-  "display_name": "Mercury Coder",
-  "name": "mercury-coder",
+  "display_name": "Mercury",
+  "name": "mercury",
   "payout_price": {
     "description": "Service provider charges $0.25 / $1 per 1M input/output tokens",
     "input": "0",
     "output": "0",
     "type": "one_million_tokens"
   },
-  "schema": "offering_v1",
   "service_type": "llm",
   "status": "ready",
   "tags": [
@@ -32,7 +31,7 @@
     "gateway",
     "byok"
   ],
-  "time_created": "2026-01-26T02:54:01.477Z",
+  "time_created": "2026-01-26T02:54:01.428Z",
   "upstream_access_config": {
     "Inception API": {
       "access_method": "http",
@@ -40,7 +39,7 @@
       "base_url": "https://api.inceptionlabs.ai",
       "rate_limits": [],
       "routing_key": {
-        "model": "mercury-coder"
+        "model": "mercury"
       }
     }
   }
