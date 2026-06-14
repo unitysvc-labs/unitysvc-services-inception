@@ -23,6 +23,13 @@
       "$doc_preset": "llm_code_example_shell"
     }
   },
+  "list_price": {
+    "cached_input": "0",
+    "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
+    "input": "0",
+    "output": "0",
+    "type": "one_million_tokens"
+  },
   "name": "inception/mercury-2",
   "status": "ready",
   "time_created": "2026-03-09T17:28:00.193347Z",

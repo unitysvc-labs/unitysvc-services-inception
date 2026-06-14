@@ -30,7 +30,7 @@
     "type": "one_million_tokens"
   },
   "name": "inception/mercury",
-  "status": "ready",
+  "status": "deprecated",
   "time_created": "2026-01-26T02:54:01.476Z",
   "user_access_interfaces": {
     "provider_api": {

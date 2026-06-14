@@ -6,13 +6,25 @@
   "description": "Mercury 2 language model",
   "details": {
     "context_length": 128000,
+    "litellm_provider": "inception",
+    "max_input_tokens": 128000,
+    "max_output_tokens": 50000,
+    "max_tokens": 50000,
     "metadata_sources": {
       "context_length": "openrouter"
     },
+    "mode": "chat",
     "parameter_count": null
   },
   "display_name": "Mercury 2",
   "name": "mercury-2",
+  "payout_price": {
+    "cached_input": "0",
+    "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
+    "input": "0",
+    "output": "0",
+    "type": "one_million_tokens"
+  },
   "service_type": "llm",
   "status": "ready",
   "tags": [
