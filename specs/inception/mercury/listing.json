@@ -29,16 +29,15 @@
     "output": "0",
     "type": "one_million_tokens"
   },
-  "name": "inception/mercury-coder",
-  "schema": "listing_v1",
+  "name": "inception/mercury",
   "status": "ready",
-  "time_created": "2026-01-26T02:54:01.478Z",
+  "time_created": "2026-01-26T02:54:01.476Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/inception",
       "routing_key": {
-        "model": "mercury-coder"
+        "model": "mercury"
       }
     }
   }
