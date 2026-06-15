@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.inceptionlabs.ai/v1",
+    "description": "Mercury 2 language model",
+    "details": {
+      "context_length": 128000,
+      "litellm_provider": "inception",
+      "max_input_tokens": 128000,
+      "max_output_tokens": 50000,
+      "max_tokens": 50000,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
+      "mode": "chat",
+      "parameter_count": null
+    },
+    "display_name": "Mercury 2",
+    "env_api_key_name": "INCEPTION_API_KEY",
+    "list_price": {
+      "cached_input": "0",
+      "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "mercury-2",
+    "payout_price": {
+      "cached_input": "0",
+      "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Inception",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
