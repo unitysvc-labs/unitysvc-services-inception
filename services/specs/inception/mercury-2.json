@@ -17,16 +17,17 @@
     "display_name": "Mercury 2",
     "env_api_key_name": "INCEPTION_API_KEY",
     "list_price": {
-      "description": "Free (bring your own Inception API key \u2014 Inception charges you directly at $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens)",
+      "description": "Free (BYOK)",
       "price": "0",
       "type": "constant"
     },
     "offering_name": "mercury-2",
     "payout_price": {
-      "description": "Free (bring your own Inception API key \u2014 Inception charges you directly at $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens)",
+      "description": "Free (BYOK)",
       "price": "0",
       "type": "constant"
     },
+    "pricing_note": "$0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
     "provider_display_name": "Inception",
     "service_type": "llm",
     "status": "ready"

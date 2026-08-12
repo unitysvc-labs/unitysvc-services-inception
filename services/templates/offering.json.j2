@@ -5,9 +5,11 @@
     the populate script emits a one-line brief). Teaser + detail + how-to. #}
 {%- set _brief = description | default(display_name ~ ' — a ' ~ service_type ~ ' model served by ' ~ provider_display_name, true) %}
 {%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if details.context_length else '' %}
-{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway; you bring your own ' ~ provider_display_name ~ ' API key, so token usage is billed by ' ~ provider_display_name ~ ' directly and the service is free through UnitySVC.' %}
+{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway with your own ' ~ provider_display_name ~ ' API key (the byok channel). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
-{%- set _description = _brief ~ '\n\n' ~ _detail ~ '\n\n' ~ _howto %}
+{#- Closing BYOK pricing paragraph: the price cell just reads "Free (BYOK)"; the provider's reference rates live here where there is room. #}
+{%- set _byok = 'Pricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by ' ~ provider_display_name ~ ' directly' ~ (' at ' ~ pricing_note if pricing_note else '') ~ '.' %}
+{%- set _description = _brief ~ '\n\n' ~ _detail ~ '\n\n' ~ _howto ~ '\n\n' ~ _byok %}
   "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": ["{{ service_type }}"],

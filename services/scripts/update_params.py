@@ -119,40 +119,35 @@ class ModelSource:
 
         # BYOK: the customer supplies their own API key, so usage is billed by
         # the provider directly and UnitySVC meters nothing — the price is Free.
-        # The provider's current rates go in the price description as a reference,
-        # phrased as "Free (...)" so it never reads as a contradictory 0-valued
-        # metered price.
-        pricing = None
-        if model_data:
-            if "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
-                input_price = round(float(
-                    model_data["input_cost_per_token"]) * 1_000_000, 4)
-                output_price = round(float(
-                    model_data["output_cost_per_token"]) * 1_000_000, 4)
-                if "cache_read_input_token_cost" in model_data:
-                    cached_price = round(float(
-                        model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
-                    price_desc = (
-                        f"Free (bring your own {PROVIDER_DISPLAY_NAME} API key — "
-                        f"{PROVIDER_DISPLAY_NAME} charges you directly at "
-                        f"${self._format_price(input_price)} / "
-                        f"${self._format_price(output_price)} / "
-                        f"${self._format_price(cached_price)} "
-                        f"per 1M input/output/cached tokens)"
-                    )
-                else:
-                    price_desc = (
-                        f"Free (bring your own {PROVIDER_DISPLAY_NAME} API key — "
-                        f"{PROVIDER_DISPLAY_NAME} charges you directly at "
-                        f"${self._format_price(input_price)} / "
-                        f"${self._format_price(output_price)} "
-                        f"per 1M input/output tokens)"
-                    )
-                pricing = {
-                    "type": "constant",
-                    "price": "0",
-                    "description": price_desc,
-                }
+        # Keep the price cell short ("Free (BYOK)"); the provider's reference
+        # rates go into a dedicated closing paragraph of the offering
+        # description (pricing_note, rendered by the template).
+        pricing = {
+            "type": "constant",
+            "price": "0",
+            "description": "Free (BYOK)",
+        }
+        pricing_note = None
+        if model_data and "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
+            input_price = round(float(
+                model_data["input_cost_per_token"]) * 1_000_000, 4)
+            output_price = round(float(
+                model_data["output_cost_per_token"]) * 1_000_000, 4)
+            if "cache_read_input_token_cost" in model_data:
+                cached_price = round(float(
+                    model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
+                pricing_note = (
+                    f"${self._format_price(input_price)} / "
+                    f"${self._format_price(output_price)} / "
+                    f"${self._format_price(cached_price)} "
+                    f"per 1M input/output/cached tokens"
+                )
+            else:
+                pricing_note = (
+                    f"${self._format_price(input_price)} / "
+                    f"${self._format_price(output_price)} "
+                    f"per 1M input/output tokens"
+                )
 
         return {
             # Folder path under specs/ == listing.name == "<provider>/<model_id>"
@@ -167,6 +162,8 @@ class ModelSource:
             "status": "ready",
             "details": details,
             "payout_price": pricing,
+            # Reference rates for the BYOK pricing paragraph (template-rendered)
+            "pricing_note": pricing_note,
             # Listing fields
             "list_price": pricing,
             # Provider config (for templates)
