@@ -117,7 +117,11 @@ class ModelSource:
         if canonical["sources"]:
             details["metadata_sources"] = canonical["sources"]
 
-        # Extract upstream pricing for description, but set prices to 0 for BYOK
+        # BYOK: the customer supplies their own API key, so usage is billed by
+        # the provider directly and UnitySVC meters nothing — the price is Free.
+        # The provider's current rates go in the price description as a reference,
+        # phrased as "Free (...)" so it never reads as a contradictory 0-valued
+        # metered price.
         pricing = None
         if model_data:
             if "input_cost_per_token" in model_data and "output_cost_per_token" in model_data:
@@ -125,31 +129,30 @@ class ModelSource:
                     model_data["input_cost_per_token"]) * 1_000_000, 4)
                 output_price = round(float(
                     model_data["output_cost_per_token"]) * 1_000_000, 4)
-                price_desc = (
-                    f"Service provider charges "
-                    f"${self._format_price(input_price)} / "
-                    f"${self._format_price(output_price)} "
-                    f"per 1M input/output tokens"
-                )
-                pricing = {
-                    "type": "one_million_tokens",
-                    "input": "0",
-                    "output": "0",
-                    "description": price_desc,
-                }
-                # Include cached_input if available
                 if "cache_read_input_token_cost" in model_data:
                     cached_price = round(float(
                         model_data["cache_read_input_token_cost"]) * 1_000_000, 4)
-                    pricing["cached_input"] = "0"
                     price_desc = (
-                        f"Service provider charges "
+                        f"Free (bring your own {PROVIDER_DISPLAY_NAME} API key — "
+                        f"{PROVIDER_DISPLAY_NAME} charges you directly at "
                         f"${self._format_price(input_price)} / "
                         f"${self._format_price(output_price)} / "
                         f"${self._format_price(cached_price)} "
-                        f"per 1M input/output/cached tokens"
+                        f"per 1M input/output/cached tokens)"
                     )
-                    pricing["description"] = price_desc
+                else:
+                    price_desc = (
+                        f"Free (bring your own {PROVIDER_DISPLAY_NAME} API key — "
+                        f"{PROVIDER_DISPLAY_NAME} charges you directly at "
+                        f"${self._format_price(input_price)} / "
+                        f"${self._format_price(output_price)} "
+                        f"per 1M input/output tokens)"
+                    )
+                pricing = {
+                    "type": "constant",
+                    "price": "0",
+                    "description": price_desc,
+                }
 
         return {
             # Folder path under specs/ == listing.name == "<provider>/<model_id>"

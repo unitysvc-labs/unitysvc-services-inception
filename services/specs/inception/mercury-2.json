@@ -17,19 +17,15 @@
     "display_name": "Mercury 2",
     "env_api_key_name": "INCEPTION_API_KEY",
     "list_price": {
-      "cached_input": "0",
-      "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
-      "input": "0",
-      "output": "0",
-      "type": "one_million_tokens"
+      "description": "Free (bring your own Inception API key \u2014 Inception charges you directly at $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens)",
+      "price": "0",
+      "type": "constant"
     },
     "offering_name": "mercury-2",
     "payout_price": {
-      "cached_input": "0",
-      "description": "Service provider charges $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
-      "input": "0",
-      "output": "0",
-      "type": "one_million_tokens"
+      "description": "Free (bring your own Inception API key \u2014 Inception charges you directly at $0.25 / $0.75 / $0.025 per 1M input/output/cached tokens)",
+      "price": "0",
+      "type": "constant"
     },
     "provider_display_name": "Inception",
     "service_type": "llm",
