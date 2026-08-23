@@ -16,8 +16,13 @@
 {%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if details.context_length else '' %}
 {%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway with your own ' ~ provider_display_name ~ ' API key (the byok channel). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
-{#- Closing BYOK pricing paragraph: the price cell just reads "Free (BYOK)"; the provider's reference rates live here where there is room. #}
-{%- set _byok = 'Pricing — this is a bring-your-own-key (BYOK) service, so it is free through the UnitySVC gateway; usage is billed by ' ~ provider_display_name ~ ' directly' ~ (' at ' ~ pricing_note if pricing_note else '') ~ '.' %}
+{#- Closing pricing paragraph. The price cell now carries "why free" itself — a
+    BYOK pill beside the amount (see listing.json.j2) — so this paragraph no
+    longer repeats it and states only the rate. It is not redundant with the
+    cell's hover note: a `title` attribute is unreachable on touch, absent from
+    the API/MCP catalog surface, and not searchable, and for a BYOK listing the
+    upstream rate is the difference between free and real money. #}
+{%- set _byok = 'Pricing — usage is billed by ' ~ provider_display_name ~ ' directly' ~ (' at ' ~ pricing_note if pricing_note else '') ~ '.' %}
 {%- set _summary = (_brief.split('\n\n')[0] | trim)[:200] %}
 {%- set _description = _detail ~ '\n\n' ~ _howto ~ '\n\n' ~ _byok %}
   "summary": {{ _summary | tojson }},
