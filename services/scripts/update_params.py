@@ -119,9 +119,10 @@ class ModelSource:
 
         # BYOK: the customer supplies their own API key, so usage is billed by
         # the provider directly and UnitySVC meters nothing — the price is Free.
-        # Keep the price cell short ("Free (BYOK)"); the provider's reference
-        # rates go into a dedicated closing paragraph of the offering
-        # description (pricing_note, rendered by the template).
+        # This plain description is what payout_price keeps (seller-facing). The
+        # customer-facing listing cell is composed in listing.json.j2 from
+        # pricing_note, into the "<amount> ~ <PILL> | <note>" grammar; do not
+        # build it here, since this dict feeds payout_price too.
         pricing = {
             "type": "constant",
             "price": "0",
