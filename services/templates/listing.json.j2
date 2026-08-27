@@ -31,33 +31,25 @@
       "routing_key": {"model": "{{ offering_name }}"}
     }
   },
+  {#- Every document below is DERIVED from what this service is: its
+      capability and the request dialects it accepts (unitysvc/unitysvc#1899).
+      The catalog-wide shape lives in unitysvc-data's `llm_example_collection`
+      preset, so a new example flavour or a fixed preset reaches this repo on
+      the next release rather than through a PR here.
+
+      Anything specific to one service goes in a SIBLING key beside the
+      sentinel: `expand_presets` merges siblings over the expanded mapping, so
+      a listing can add a document the collection cannot derive, or replace one
+      it generated, by title. Inception needs none. -#}
   "documents": {
-    "How to use this model": {
-      "$doc_preset": "llm_description"
-    },
-    "Python code example": {
-      "$doc_preset": "llm_code_example_openai", "meta": {"sleep_after_test": 5}
-    },
-    "Python code example (Anthropic-style input)": {
-      "$doc_preset": "llm_code_example_anthropic_to_openai_sdk", "meta": {"sleep_after_test": 5}
-    },
-    "cURL code example (Anthropic-style input)": {
-      "$doc_preset": "llm_code_example_anthropic_to_openai_shell", "meta": {"sleep_after_test": 5}
-    },
-    "Python function calling code example": {
-      "$doc_preset": "llm_code_example_fc_requests", "meta": {"sleep_after_test": 5}
-    },
-    "JavaScript code example": {
-      "$doc_preset": "llm_code_example_javascript", "meta": {"sleep_after_test": 5}
-    },
-    "cURL code example": {
-      "$doc_preset": "llm_code_example_shell", "meta": {"sleep_after_test": 5}
-    },
-    "Connectivity test": {
-      "$doc_preset": "llm_connectivity", "meta": {"sleep_after_test": 5}
-    },
-    "Default request body": {
-      "$doc_preset": "llm_request_template"
+    "$llm_example_collection": {
+      "capabilities": ["chat"],
+      {#- Matches the offering: an OpenAI-compatible upstream the gateway also
+          exposes in the Anthropic dialect via the llm_translator. -#}
+      "formats": ["openai", "anthropic"],
+      "upstream_dialect": "openai",
+      "tools": true,
+      "sleep": 5
     }
   }
 }
