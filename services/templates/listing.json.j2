@@ -48,7 +48,13 @@
           exposes in the Anthropic dialect via the llm_translator. -#}
       "formats": ["openai", "anthropic"],
       "upstream_dialect": "openai",
+{#- Gated on the same per-model signal as `feature:func-call`, so the badge a
+    customer sees and the example they can run cannot disagree. A no-op for
+    today's catalog (mercury-2 lists `tools`); it is the guard for the next
+    model that does not. Omitted rather than sent as `false`. #}
+{%- if details and "tools" in (details.supported_features or []) %}
       "tools": true,
+{%- endif %}
       "sleep": 5
     }
   }

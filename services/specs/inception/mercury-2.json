@@ -12,7 +12,12 @@
         "context_length": "openrouter"
       },
       "mode": "chat",
-      "parameter_count": null
+      "parameter_count": null,
+      "supported_features": [
+        "json_mode",
+        "structured_outputs",
+        "tools"
+      ]
     },
     "display_name": "Mercury 2",
     "env_api_key_name": "INCEPTION_API_KEY",
