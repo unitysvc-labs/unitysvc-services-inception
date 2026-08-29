@@ -34,7 +34,24 @@
   "capabilities": ["chat"],
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
-  "tags": ["ai", "gateway", "byok"],
+{#- Closed tag vocabulary (unitysvc docs/tags.yml). A tag is a short label a
+    CUSTOMER sees; the only one a seller may declare is `feature:func-call`.
+    The old ["ai", "gateway", "byok"] triple is gone because each entry
+    restated a field the platform already owns -- service_type, the DERIVED
+    gateway_type, and the enrollment channel the gateway actually routes on --
+    and an upload carrying any of them is now rejected at ingestion. (The
+    `byok` under upstream_access_config below is that channel key itself, and
+    is untouched.)
+
+    func-call is a PER-MODEL fact, taken from Inception's own
+    `supported_features` on /v1/models, which scripts/update_params.py carries
+    into `details`. A model whose upstream does not list `tools` renders no
+    `tags` key at all -- the platform treats that exactly like an empty list,
+    so it under-claims instead of shipping a tool-calling example the upstream
+    would reject with `400 invalid request: tool use is not supported`. #}
+{%- if details and "tools" in (details.supported_features or []) %}
+  "tags": ["feature:func-call"],
+{%- endif %}
   "details": {{ dict(details or {}, input_formats=["openai", "anthropic"], output_formats=["openai_response", "anthropic_response"]) | tojson }},
 {%- if payout_price %}
   "payout_price": {{ payout_price | tojson }},

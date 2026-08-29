@@ -144,6 +144,19 @@ class ModelSource:
         if "object" in model_info:
             details["object"] = model_info["object"]
 
+        # Inception's /v1/models enumerates what each model can actually do:
+        #   "supported_features": ["tools", "json_mode", "structured_outputs"]
+        # `tools` is the one the catalog could not previously say, and saying it
+        # wrongly is expensive -- a service that advertises tool calling without
+        # it answers the shipped example with `400 invalid request: tool use is
+        # not supported by the provided model`.  Carry the upstream list through
+        # verbatim so offering.json.j2 can derive `feature:func-call` from the
+        # provider's own answer rather than from an assumption about the
+        # catalog.  Absent on an older upstream => no tag, which under-claims.
+        if model_info.get("supported_features"):
+            details["supported_features"] = sorted(
+                model_info["supported_features"])
+
         # Canonical (snake_case) metadata required by the platform validator
         # for LLM offerings.  Both keys must be present; null asserts
         # "unknown".  Claude models are closed-source so parameter_count
