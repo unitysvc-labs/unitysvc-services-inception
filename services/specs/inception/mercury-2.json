@@ -3,7 +3,7 @@
     "api_base_url": "https://api.inceptionlabs.ai/v1",
     "description": "Mercury 2 language model",
     "details": {
-      "context_length": 128000,
+      "context_length": 260000,
       "litellm_provider": "inception",
       "max_input_tokens": 128000,
       "max_output_tokens": 50000,
