@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.inceptionlabs.ai/v1",
+    "description": "Mercury 2.5 language model",
+    "details": {
+      "context_length": 260000,
+      "litellm_provider": "inception",
+      "max_input_tokens": 260000,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
+      "mode": "chat",
+      "parameter_count": null,
+      "supported_features": [
+        "json_mode",
+        "structured_outputs",
+        "tools"
+      ]
+    },
+    "display_name": "Mercury 2.5",
+    "env_api_key_name": "INCEPTION_API_KEY",
+    "list_price": {
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
+    },
+    "offering_name": "mercury-2.5",
+    "payout_price": {
+      "description": "Free (BYOK)",
+      "price": "0",
+      "type": "constant"
+    },
+    "pricing_note": "$0.2 / $0.75 per 1M input/output tokens",
+    "provider_display_name": "Inception",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
