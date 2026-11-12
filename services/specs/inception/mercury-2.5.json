@@ -8,7 +8,7 @@
       "max_input_tokens": 260000,
       "max_output_tokens": 65536,
       "metadata_sources": {
-        "context_length": "openrouter"
+        "context_length": "litellm"
       },
       "mode": "chat",
       "parameter_count": null,
