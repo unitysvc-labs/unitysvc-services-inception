@@ -34,6 +34,6 @@
     "pricing_note": "$0.25 / $0.75 / $0.025 per 1M input/output/cached tokens",
     "provider_display_name": "Inception",
     "service_type": "llm",
-    "status": "ready"
+    "status": "deprecated"
   }
 }
