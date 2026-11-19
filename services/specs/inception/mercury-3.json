@@ -4,9 +4,6 @@
     "description": "Mercury 3 language model",
     "details": {
       "context_length": 1000000,
-      "metadata_sources": {
-        "context_length": "openrouter"
-      },
       "parameter_count": null,
       "supported_features": [
         "json_mode",
