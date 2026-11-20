@@ -3,7 +3,13 @@
     "api_base_url": "https://api.inceptionlabs.ai/v1",
     "description": "Mercury Decide language model",
     "details": {
-      "context_length": null,
+      "context_length": 65536,
+      "litellm_provider": "openrouter",
+      "max_input_tokens": 65536,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "evaluation",
       "parameter_count": null
     },
     "display_name": "Mercury Decide",
@@ -19,7 +25,7 @@
       "price": "0",
       "type": "constant"
     },
-    "pricing_note": null,
+    "pricing_note": "$0.02 / $0 per 1M input/output tokens",
     "provider_display_name": "Inception",
     "service_type": "llm",
     "status": "ready"
